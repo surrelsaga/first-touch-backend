@@ -19,12 +19,53 @@ void vs undefined: read here "https://stackoverflow.com/questions/58885485/why-d
 but void accept that, void means the return value may have any value, not just undefined
 */
 
+/*
+CHALLANGE 3(add endpoints): Send back a response
+1. Add a GET route for '/' that responds with an empty JSON object
+2. Compile the app with 'npx tsc'
+3. Run the compiled Javascript with 'node dist/index.js'
+*/
+
 import express from 'express';
-import type {Express} from 'express';
+import type {Express, Request, Response} from 'express';
 
 const app: Express = express();
 const port = 8000;
 
+/*
+CHALLENGE: Respond with some data!
+1. Create an object called `pet` before the `/` route that includes:
+   - name (string)
+   - species (string)
+   - adopted (boolean)
+   - age (number)
+2. Type your new pet object (inline or using a custom type)
+3. Update your existing GET `/` route to return that pet object
+4. Compile the TypeScript and run the resulting JavaScript to see it in action
+*/
+
+type Pet = {
+    name: string,
+    species: string,
+    adopted: boolean,
+    age: number
+};
+
+const pet:Pet = {
+    name: "Rubik",
+    species: "Cat",
+    adopted: true,
+    age: 3
+};
+
+// start the server
 app.listen(port, (): void => {
     console.log(`Listening on port: ${port}`)
+});
+
+// route for '/'
+app.get('/', (req: Request, res: Response) => {
+    // not this cuz the send will guess the arg type 
+    // res.send({});
+    res.json(pet); // says the endpoint returns JSON
 });
