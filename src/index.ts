@@ -26,8 +26,10 @@ CHALLANGE 3(add endpoints): Send back a response
 3. Run the compiled Javascript with 'node dist/index.js'
 */
 
-import express from 'express';
-import type {Express, Request, Response} from 'express';
+import express from "express";
+import type { Express, Request, Response } from "express";
+
+import { pets } from './data/pets.ts';
 
 const app: Express = express();
 const port = 8000;
@@ -44,28 +46,14 @@ CHALLENGE: Respond with some data!
 4. Compile the TypeScript and run the resulting JavaScript to see it in action
 */
 
-type Pet = {
-    name: string,
-    species: string,
-    adopted: boolean,
-    age: number
-};
-
-const pet:Pet = {
-    name: "Rubik",
-    species: "Cat",
-    adopted: true,
-    age: 3
-};
-
 // start the server
 app.listen(port, (): void => {
-    console.log(`Listening on port: ${port}`)
+  console.log(`Listening on port: ${port}`);
 });
 
 // route for '/'
-app.get('/', (req: Request, res: Response) => {
-    // not this cuz the send will guess the arg type 
-    // res.send({});
-    res.json(pet); // says the endpoint returns JSON
+app.get("/", (req: Request, res: Response) => {
+  // not this cuz the send will guess the arg type
+  // res.send({});
+  res.json(pets); // says the endpoint returns JSON
 });

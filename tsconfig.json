@@ -1,7 +1,9 @@
 {
-    "extends": "@tsconfig/node24/tsconfig.json",
-    "compilerOptions": {
-        "rootDir": "src", //source code lives here
-        "outDir": "dist" //compiled (bundled as I learned bf) code will live here
-    }
+  "extends": "@tsconfig/node24/tsconfig.json",
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
+    "rootDir": "src",
+    "outDir": "dist"
+  }
 }
